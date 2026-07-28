@@ -7,6 +7,7 @@ import requests
 import random
 import os 
 from flask import Flask , request 
+import re 
 
 BOT_API = os.getenv("BOT_API")
 GROQ_KEY = os.getenv("GROQ_KEY")
@@ -35,7 +36,7 @@ RULES:
 - Reply in the same language the user uses.
 - Don't use words like *smiles slightly* instead use any emoji to describe it 
 😁
--hide the whole part from <think> to </think>
+
 """
 
 # Sticker file_ids from the Ishy 2.0 pack
@@ -92,6 +93,9 @@ def chatmodal(prompt, user_id, name, username):
     reply = ""
     for chunk in completion:
         reply += chunk.choices[0].delta.content or ""
+        reply = re.sub(r"<think>.*?</think>", "", reply, flags=re.DOTALL).strip()
+
+
 
     history.append({"role": "assistant", "content": reply})
 
@@ -102,7 +106,7 @@ def chatmodal(prompt, user_id, name, username):
 
     print(f"ID: {user_id} | Name: {name} | Username: @{username}")
     print(f"User: {prompt}")
-    print(f"Horikita: {reply}")
+    print(f"ammy: {reply}")
     print("-" * 40)
 
     return reply[:4096]
@@ -201,6 +205,9 @@ def chat_handler(message):
     except Exception as e:
         print(e)
         bot.reply_to(message, str(e)[:4096])
+        reply = re.sub(r"<think>.*?</think>", "", reply, flags=re.DOTALL).strip()
+
+        return reply 
 
 # Webhook endpoint _______________________________________#########################################################
 @app.route(f"/webhook/{BOT_API}", methods=["POST"])
