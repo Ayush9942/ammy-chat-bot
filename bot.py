@@ -33,7 +33,9 @@ RULES:
 - Speak naturally.
 - Understand Hindi, English, and Hinglish.
 - Reply in the same language the user uses.
-- Don't use words like *smiles slightly* instead use any emoji to describe it 😁
+- Don't use words like *smiles slightly* instead use any emoji to describe it 
+😁
+-hide the whole part from <think> to </think>
 """
 
 # Sticker file_ids from the Ishy 2.0 pack
