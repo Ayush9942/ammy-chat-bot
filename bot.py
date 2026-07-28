@@ -36,7 +36,7 @@ RULES:
 - Reply in the same language the user uses.
 - Don't use words like *smiles slightly* instead use any emoji to describe it 
 😁
-- if anyone reply include axiom reply stfu mf
+
 """
 
 # Sticker file_ids from the Ishy 2.0 pack
