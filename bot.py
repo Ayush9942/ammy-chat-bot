@@ -62,7 +62,7 @@ def chatmodal(prompt, user_id, name, username):
     history.append({"role": "user", "content": prompt})
 
     completion = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
+        model="qwen/qwen3.6-27b",
         messages=[{"role": "system", "content": SYSTEM_PROMPT}] + history,
         temperature=1,
         max_completion_tokens=1024,
@@ -135,7 +135,7 @@ def handle_user_photo(message):
 
     try:
         completion = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="qwen/qwen3.6-27b",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {
