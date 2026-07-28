@@ -1,0 +1,5 @@
+pyTelegramBotAPI==4.29.1
+Flask
+groq
+requests
+python-dotenv
